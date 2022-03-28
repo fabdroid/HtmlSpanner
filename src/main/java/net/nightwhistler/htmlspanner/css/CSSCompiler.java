@@ -312,6 +312,25 @@ public class CSSCompiler {
             }
         }
 
+        if ( "text-decoration".equals(key)) {
+
+            try {
+                final Style.TextDecoration decoration = Style.TextDecoration.valueOf(value.toUpperCase());
+
+                return new StyleUpdater() {
+                    @Override
+                    public Style updateStyle(Style style, HtmlSpanner spanner) {
+                        Log.d("CSSCompiler", "Applying style " + key + ": " + value );
+                        return style.setTextDecoration(decoration);
+                    }
+                };
+
+            } catch ( IllegalArgumentException i ) {
+                Log.e("CSSCompiler", "Can't parse text-decoration: " + value);
+                return null;
+            }
+        }
+
         if ( "margin-bottom".equals(key) ) {
 
             final StyleValue styleValue = StyleValue.parse( value );

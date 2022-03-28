@@ -395,6 +395,11 @@ public class HtmlSpanner {
         registerHandler("b", boldHandler);
         registerHandler("strong", boldHandler);
 
+        TagNodeHandler underlineHandler = new StyledTextHandler(
+                new Style().setTextDecoration(Style.TextDecoration.UNDERLINE));
+
+        registerHandler("u", underlineHandler);
+
         TagNodeHandler marginHandler = new StyledTextHandler(
                 new Style().setMarginLeft(new StyleValue(2.0f, StyleValue.Unit.EM)));
 
