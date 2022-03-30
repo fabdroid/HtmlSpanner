@@ -2,7 +2,7 @@
 
 ### Gradle dependency:
 
-``implementation 'com.github.NightWhistler:HtmlSpanner:0.4'``
+``implementation 'com.github.fabdroid:HtmlSpanner:master-SNAPSHOT'``
 
 HtmlSpanner started as the HTML rendering library for PageTurner, but looking through some questions on StackOverflow I noticed how many people were struggling with the infamous ``Html.fromHtml()`` and getting its results to display properly in TextViews.
 
@@ -26,6 +26,7 @@ HtmlSpanner now also supports the most common subset of CSS: both style tags and
 * strong
 * blockquote
 * ul
+* u
 * ol
 * tt
 * code
@@ -66,6 +67,7 @@ HtmlSpanner now also supports the most common subset of CSS: both style tags and
 * margin-left
 * margin-right
 * text-indent
+* text-decoration
 * border-style
 * border-color
 * border-style
