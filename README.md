@@ -80,7 +80,7 @@ HtmlSpanner now also supports the most common subset of CSS: both style tags and
   }
 
 2. add 
-## compile 'com.github.NightWhistler:HtmlSpanner:0.4'##
+## compile 'com.github.fabdroid:HtmlSpanner:master-SNAPSHOT'##
 in app module
 
 In its simplest form, just call ``(new HtmlSpanner()).fromHtml()`` to get similar output as Android's ``Html.fromHtml()``.
