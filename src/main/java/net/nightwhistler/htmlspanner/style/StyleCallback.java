@@ -75,6 +75,12 @@ public class StyleCallback implements SpanCallback {
                     Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
 
+        if (useStyle.getTextDecoration() != null) {
+            if (useStyle.getTextDecoration() == Style.TextDecoration.UNDERLINE) {
+                builder.setSpan(new UnderlineSpan(), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+        }
+
         //If there is a border, the BorderSpan will also draw the background colour if needed.
         if ( useStyle.getBorderStyle() != null ) {
             builder.setSpan(new BorderSpan(useStyle, start, end, spanner.isUseColoursFromStyle()), start, end,
