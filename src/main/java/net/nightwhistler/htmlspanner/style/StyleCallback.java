@@ -68,17 +68,24 @@ public class StyleCallback implements SpanCallback {
                     Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
 
+        if ( useStyle.getTextDecoration() != null ) {
+            if (( useStyle.getTextDecoration() == Style.TextDecoration.UNDERLINE ) ||
+                    (useStyle.getTextDecoration() == Style.TextDecoration.UNDERLINELINETHROUGH)) {
+                builder.setSpan(new UnderlineSpan(), start, end,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+            if ((useStyle.getTextDecoration() == Style.TextDecoration.LINETHROUGH) ||
+                    (useStyle.getTextDecoration() == Style.TextDecoration.UNDERLINELINETHROUGH)) {
+                builder.setSpan(new StrikethroughSpan(), start, end,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+        }
+
         //If there's no border, we use a BackgroundColorSpan to draw colour behind the text
         if ( spanner.isUseColoursFromStyle() &&  useStyle.getBackgroundColor() != null  && useStyle.getBorderStyle() == null ) {
             //Log.d("StyleCallback", "Applying BackgroundColorSpan with color " + useStyle.getBackgroundColor() + " from " + start + " to " + end + " on text " + builder.subSequence(start, end));
               builder.setSpan(new BackgroundColorSpan(useStyle.getBackgroundColor()), start, end,
                     Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        }
-
-        if (useStyle.getTextDecoration() != null) {
-            if (useStyle.getTextDecoration() == Style.TextDecoration.UNDERLINE) {
-                builder.setSpan(new UnderlineSpan(), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            }
         }
 
         //If there is a border, the BorderSpan will also draw the background colour if needed.

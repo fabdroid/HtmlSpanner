@@ -13,11 +13,33 @@ import java.lang.reflect.Field;
 public class Style {
 
     public static enum TextAlignment { LEFT, CENTER, RIGHT };
-    public static enum FontWeight {  NORMAL, BOLD };
-    public static enum FontStyle { NORMAL, ITALIC };
+    public static enum FontWeight {  NORMAL, BOLD }
+    public static enum FontStyle { NORMAL, ITALIC }
     public static enum DisplayStyle { BLOCK, INLINE };
-    public static enum BorderStyle { SOLID, DASHED, DOTTED, DOUBLE };
-    public static enum TextDecoration { NORMAL, UNDERLINE };
+    public static enum BorderStyle { SOLID, DASHED, DOTTED, DOUBLE }
+
+    public static enum TextDecoration {
+        NORMAL,
+        UNDERLINE,
+        LINETHROUGH,
+        UNDERLINELINETHROUGH;
+
+        public static TextDecoration fromTextDecorationType(String textDecorationType) {
+            switch (textDecorationType.toUpperCase()) {
+                case "NORMAL":
+                    return NORMAL;
+                case "UNDERLINE":
+                    return UNDERLINE;
+                case "LINE-THROUGH":
+                    return LINETHROUGH;
+                case "UNDERLINE LINE-THROUGH":
+                case "LINE-THROUGH UNDERLINE":
+                    return UNDERLINELINETHROUGH;
+                default:
+                    return NORMAL;
+            }
+        }
+    };
 
     private final FontFamily fontFamily;
     private final TextAlignment textAlignment;
@@ -275,7 +297,7 @@ public class Style {
         return this.borderWidth;
     }
 
-    public TextDecoration getTextDecoration() { return textDecoration; }
+    public TextDecoration getTextDecoration() { return this.textDecoration; }
 
     public String toString() {
 

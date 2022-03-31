@@ -315,7 +315,7 @@ public class CSSCompiler {
         if ( "text-decoration".equals(key)) {
 
             try {
-                final Style.TextDecoration decoration = Style.TextDecoration.valueOf(value.toUpperCase());
+                final Style.TextDecoration decoration = Style.TextDecoration.fromTextDecorationType(value.toUpperCase());
 
                 return new StyleUpdater() {
                     @Override

@@ -400,6 +400,11 @@ public class HtmlSpanner {
 
         registerHandler("u", underlineHandler);
 
+        TagNodeHandler strikethroughHandler = new StyledTextHandler(
+                new Style().setTextDecoration(Style.TextDecoration.LINETHROUGH));
+
+        registerHandler("del", strikethroughHandler);
+
         TagNodeHandler marginHandler = new StyledTextHandler(
                 new Style().setMarginLeft(new StyleValue(2.0f, StyleValue.Unit.EM)));
 
